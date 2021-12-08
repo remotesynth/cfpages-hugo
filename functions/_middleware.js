@@ -5,8 +5,8 @@ class ElementHandler {
 }
 const rewriter = new HTMLRewriter().on("h1", new ElementHandler());
 
-export async function onRequest(context) {
-  const res = await fetch(context.request);
+export async function onRequest(request, response, next) {
+  const res = await next();
   const contentType = res.headers.get("Content-Type");
   // If the response is HTML, it can be transformed with
   // HTMLRewriter -- otherwise, it should pass through
