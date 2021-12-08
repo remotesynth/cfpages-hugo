@@ -5,7 +5,7 @@ class ElementHandler {
 }
 const rewriter = new HTMLRewriter().on("h1", new ElementHandler());
 
-/* export async function onRequest(context) {
+export async function onRequest(context) {
   const res = await fetch(context.request);
   const contentType = res.headers.get("Content-Type");
   // If the response is HTML, it can be transformed with
@@ -15,12 +15,4 @@ const rewriter = new HTMLRewriter().on("h1", new ElementHandler());
   } else {
     return res;
   }
-} */
-
-const hello = async ({ next }) => {
-  const response = await next();
-  response.headers.set("X-Hello", "Hello from functions Middleware!");
-  return response;
-};
-
-export const onRequest = [hello];
+}
